@@ -74,10 +74,19 @@ import { MdEmail } from "react-icons/md";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen relative overflow-hidden bg-[#f6f3ee] text-[#111111] dark:bg-[#050505] dark:text-white transition-colors duration-500">
       <Navbar />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.03] dark:opacity-[0.02] mix-blend-overlay">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "url('https://grainy-gradients.vercel.app/noise.svg')",
+          }}
+        />
+      </div>
 
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-6 py-24">
         {/* Animated Grid Background */}
         <motion.div
           animate={{
@@ -88,80 +97,80 @@ export default function Home() {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute inset-0 opacity-20
-    bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),
-    linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)]
-    bg-[size:60px_60px]"
+          className="
+      absolute inset-0
+      opacity-40 dark:opacity-20
+      bg-[linear-gradient(rgba(0,0,0,0.04)_1px,transparent_1px),
+      linear-gradient(90deg,rgba(0,0,0,0.04)_1px,transparent_1px)]
+      dark:bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),
+      linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)]
+      bg-[size:60px_60px]
+    "
         />
 
-        {/* Background Glow */}
-        <div className="absolute w-[700px] h-[700px] bg-purple-500/10 blur-3xl rounded-full" />
-
-        {/* Floating Blobs */}
+        {/* Ambient Glow */}
         <motion.div
           animate={{
-            x: [0, 40, 0],
-            y: [0, 20, 0],
+            x: [0, 50, 0],
+            y: [0, 30, 0],
           }}
           transition={{
-            duration: 8,
+            duration: 12,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute w-[500px] h-[500px] bg-purple-500/20 blur-3xl rounded-full top-20 left-20"
+          className="
+      absolute
+      top-0
+      left-0
+      w-[600px]
+      h-[600px]
+      bg-purple-500/10
+      blur-3xl
+      rounded-full
+    "
         />
 
         <motion.div
           animate={{
-            x: [0, -30, 0],
+            x: [0, -40, 0],
             y: [0, -20, 0],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="
+      absolute
+      bottom-0
+      right-0
+      w-[500px]
+      h-[500px]
+      bg-cyan-500/10
+      blur-3xl
+      rounded-full
+    "
+        />
+
+        {/* Floating Tech Icons */}
+        <motion.div
+          animate={{
+            y: [0, -18, 0],
           }}
           transition={{
             duration: 6,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute w-[400px] h-[400px] bg-blue-500/20 blur-3xl rounded-full bottom-10 right-10"
-        />
-
-        {/* Orbit Rings */}
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{
-            duration: 40,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          style={{
-            boxShadow: "0 0 80px rgba(59,130,246,0.08)",
-          }}
-          className="absolute w-[900px] h-[900px] border border-cyan-500/10 rounded-full"
-        />
-
-        <motion.div
-          animate={{ rotate: -360 }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          style={{
-            boxShadow: "0 0 80px rgba(168,85,247,0.08)",
-          }}
-          className="absolute w-[650px] h-[650px] border border-purple-500/10 rounded-full"
-        />
-
-        {/* Floating Tech Icons */}
-        <motion.div
-          animate={{
-            y: [0, -20, 0],
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute top-40 left-24 text-6xl text-blue-500/20"
+          className="
+      absolute
+      top-32
+      left-16
+      text-6xl
+      text-blue-500/20
+      hidden lg:block
+    "
         >
           <SiDocker />
         </motion.div>
@@ -175,7 +184,14 @@ export default function Home() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute bottom-32 right-24 text-6xl text-red-500/20"
+          className="
+      absolute
+      bottom-24
+      right-20
+      text-6xl
+      text-red-500/20
+      hidden lg:block
+    "
         >
           <SiRedis />
         </motion.div>
@@ -189,118 +205,368 @@ export default function Home() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute top-64 right-40 text-5xl text-cyan-500/20"
+          className="
+      absolute
+      top-56
+      right-32
+      text-5xl
+      text-cyan-500/20
+      hidden lg:block
+    "
         >
           <SiPostgresql />
         </motion.div>
 
-        {/* Hero Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="text-center px-6 relative z-10 max-w-5xl"
-        >
-          <div className="mb-6 text-[13px] tracking-[0.3em] uppercase text-gray-500">
-            Hi, I'm
-          </div>
-
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-            <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              ZEENAT
-            </span>
-          </h1>
-
-          <div className="mt-6 text-xl md:text-3xl font-light tracking-wide text-gray-200">
-            Building resilient backend infrastructure for scale
-          </div>
-
-          {/* Tech Focus Pills */}
-          <div className="flex flex-wrap justify-center gap-3 mt-8">
-            <div className="bg-cyan-500/10 border border-cyan-500/20 px-4 py-2 rounded-full text-sm">
-              Distributed Systems
-            </div>
-
-            <div className="bg-purple-500/10 border border-purple-500/20 px-4 py-2 rounded-full text-sm">
-              Microservices
-            </div>
-
-            <div className="bg-blue-500/10 border border-blue-500/20 px-4 py-2 rounded-full text-sm">
-              Redis & BullMQ
-            </div>
-
-            <div className="bg-green-500/10 border border-green-500/20 px-4 py-2 rounded-full text-sm">
-              High Throughput APIs
-            </div>
-          </div>
-
-          <p className="max-w-3xl mt-10 text-gray-400 mx-auto text-lg leading-8">
-            I design and build scalable backend systems focused on performance,
-            reliability, caching, distributed workflows, and production-grade
-            architectures.
-          </p>
-
-          {/* Stats */}
-          <div className="flex flex-wrap justify-center gap-4 mt-12">
+        {/* HERO CONTAINER */}
+        <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+          {/* LEFT CONTENT */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="text-center lg:text-left"
+          >
+            {/* SMALL INTRO */}
             <motion.div
-              variants={fadeUp}
-              className="group relative overflow-hidden bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4 transition-all duration-500 hover:-translate-y-1 hover:border-cyan-400/30"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="
+          inline-flex items-center gap-2
+          px-4 py-2
+          rounded-full
+          border border-black/10 dark:border-white/10
+          bg-white/50 dark:bg-white/[0.03]
+          backdrop-blur-xl
+          text-sm
+          text-gray-600 dark:text-gray-400
+          mb-8
+        "
             >
-              Redis Caching
+              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+              currently building scalable backend systems
             </motion.div>
 
-            <motion.div
-              variants={fadeUp}
-              className="group relative overflow-hidden bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4 transition-all duration-500 hover:-translate-y-1 hover:border-cyan-400/30"
+            {/* MAIN HEADING */}
+            <div className="space-y-2">
+              <h1
+                className="
+            text-5xl
+            md:text-7xl
+            font-bold
+            leading-[0.95]
+            tracking-tight
+            text-black dark:text-white
+          "
+              >
+                hey, i'm
+              </h1>
+
+              <h1
+                className="
+            text-7xl
+            md:text-[8rem]
+            font-black
+            leading-none
+            tracking-tight
+            bg-gradient-to-r
+            from-purple-500
+            via-blue-500
+            to-cyan-500
+            dark:from-purple-400
+            dark:via-blue-400
+            dark:to-cyan-400
+            bg-clip-text
+            text-transparent
+          "
+              >
+                ZEENAT
+              </h1>
+
+              <div
+                className="
+            text-xl
+            md:text-3xl
+            text-gray-700 dark:text-gray-300
+            font-light
+            mt-6
+            leading-relaxed
+          "
+              >
+                i build backend systems that survive scale,
+                <br className="hidden md:block" />
+                traffic spikes, and production chaos.
+              </div>
+            </div>
+
+            {/* TECH PILLS */}
+            <div
+              className="
+          flex flex-wrap
+          justify-center lg:justify-start
+          gap-3
+          mt-10
+        "
             >
-              1M+ Requests/Month
+              {[
+                "Redis",
+                "BullMQ",
+                "Microservices",
+                "PostgreSQL",
+                "System Design",
+                "Observability",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="
+              px-4 py-2
+              rounded-full
+              border border-black/10 dark:border-white/10
+              bg-white/40 dark:bg-white/[0.03]
+              backdrop-blur-xl
+              text-sm
+              text-gray-700 dark:text-gray-300
+              hover:scale-105
+              hover:border-cyan-400/30
+              hover:bg-black/[0.03]
+              dark:hover:bg-white/[0.06]
+              transition-all duration-300
+            "
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+
+            {/* DESCRIPTION */}
+            <p
+              className="
+          max-w-2xl
+          mt-10
+          text-lg
+          leading-8
+          text-gray-600 dark:text-gray-400
+        "
+            >
+              Backend engineer focused on distributed systems, caching, async
+              workflows, observability, and building production-grade
+              architectures that actually hold up under load.
+            </p>
+
+            {/* CTA BUTTONS */}
+            <div
+              className="
+          flex flex-wrap
+          items-center
+          justify-center lg:justify-start
+          gap-4
+          mt-12
+        "
+            >
+              <a
+                href="/resume.pdf"
+                className="
+            px-7 py-3
+            rounded-2xl
+            bg-black
+            dark:bg-white
+            text-white
+            dark:text-black
+            font-medium
+            hover:scale-105
+            transition-all duration-300
+            shadow-lg shadow-black/10 dark:shadow-white/10
+          "
+              >
+                View Resume
+              </a>
+
+              <a
+                href="https://github.com/"
+                target="_blank"
+                className="
+            p-3
+            rounded-2xl
+            border border-black/10 dark:border-white/10
+            bg-white/40 dark:bg-white/[0.03]
+            backdrop-blur-xl
+            hover:bg-black/[0.05]
+            dark:hover:bg-white/[0.08]
+            hover:scale-105
+            transition-all duration-300
+          "
+              >
+                <FaGithub size={22} />
+              </a>
+
+              <a
+                href="https://linkedin.com/"
+                target="_blank"
+                className="
+            p-3
+            rounded-2xl
+            border border-black/10 dark:border-white/10
+            bg-white/40 dark:bg-white/[0.03]
+            backdrop-blur-xl
+            hover:bg-black/[0.05]
+            dark:hover:bg-white/[0.08]
+            hover:scale-105
+            transition-all duration-300
+          "
+              >
+                <FaLinkedin size={22} />
+              </a>
+
+              <a
+                href="mailto:yourmail@example.com"
+                className="
+            p-3
+            rounded-2xl
+            border border-black/10 dark:border-white/10
+            bg-white/40 dark:bg-white/[0.03]
+            backdrop-blur-xl
+            hover:bg-black/[0.05]
+            dark:hover:bg-white/[0.08]
+            hover:scale-105
+            transition-all duration-300
+          "
+              >
+                <Mail size={22} />
+              </a>
+            </div>
+          </motion.div>
+
+          {/* RIGHT VISUAL */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+            className="
+        relative
+        hidden lg:flex
+        items-center
+        justify-center
+      "
+          >
+            {/* Glow */}
+            <div
+              className="
+          absolute
+          w-[500px]
+          h-[500px]
+          bg-gradient-to-br
+          from-purple-500/20
+          via-cyan-500/10
+          to-blue-500/20
+          blur-3xl
+          rounded-full
+        "
+            />
+
+            {/* IMAGE CARD */}
+            <motion.div
+              animate={{
+                y: [0, -15, 0],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="
+          relative
+          w-[420px]
+          h-[520px]
+          rounded-[32px]
+          overflow-hidden
+          border border-black/10 dark:border-white/10
+          bg-white/40 dark:bg-white/[0.03]
+          backdrop-blur-2xl
+          shadow-2xl
+        "
+            >
+              <img
+                src="/zeenat.png"
+                alt="Zeenat"
+                className="
+            w-full
+            h-full
+            object-cover
+          "
+              />
+
+              {/* Overlay */}
+              <div
+                className="
+            absolute inset-0
+            bg-gradient-to-t
+            from-black/60
+            via-transparent
+            to-transparent
+          "
+              />
+
+              {/* TEXT */}
+              <div
+                className="
+            absolute bottom-0 left-0
+            p-8
+          "
+              >
+                <div
+                  className="
+              text-white
+              text-2xl
+              font-bold
+            "
+                >
+                  Backend Engineer
+                </div>
+
+                <div
+                  className="
+              text-gray-300
+              mt-2
+            "
+                >
+                  distributed systems • observability • scalable infra
+                </div>
+              </div>
             </motion.div>
 
+            {/* FLOATING TECH BADGE */}
             <motion.div
-              variants={fadeUp}
-              className="group relative overflow-hidden bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4 transition-all duration-500 hover:-translate-y-1 hover:border-cyan-400/30"
+              animate={{
+                y: [0, 10, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+              }}
+              className="
+          absolute
+          -bottom-6
+          -left-8
+          px-5 py-3
+          rounded-2xl
+          border border-black/10 dark:border-white/10
+          bg-white/70 dark:bg-black/40
+          backdrop-blur-xl
+          shadow-xl
+        "
             >
-              BullMQ Jobs
+              <div className="text-sm text-gray-500 dark:text-gray-400">
+                currently working with
+              </div>
+
+              <div className="flex gap-3 mt-2 text-2xl">
+                <SiDocker className="text-blue-500" />
+                <SiRedis className="text-red-500" />
+                <SiPostgresql className="text-cyan-500" />
+              </div>
             </motion.div>
-
-            <motion.div
-              variants={fadeUp}
-              className="group relative overflow-hidden bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4 transition-all duration-500 hover:-translate-y-1 hover:border-cyan-400/30"
-            >
-              Microservices
-            </motion.div>
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="flex items-center justify-center gap-4 mt-12 flex-wrap">
-            <button className="bg-white text-black px-6 py-3 rounded-xl font-medium hover:scale-105 transition">
-              View Resume
-            </button>
-
-            <a
-              href="https://github.com/"
-              target="_blank"
-              className="border border-white/20 px-4 py-3 rounded-xl hover:bg-white/10 transition"
-            >
-              <FaGithub size={22} />
-            </a>
-
-            <a
-              href="https://linkedin.com/"
-              target="_blank"
-              className="border border-white/20 px-4 py-3 rounded-xl hover:bg-white/10 transition"
-            >
-              <FaLinkedin size={22} />
-            </a>
-
-            <a
-              href="mailto:yourmail@example.com"
-              className="border border-white/20 px-4 py-3 rounded-xl hover:bg-white/10 transition"
-            >
-              <Mail size={22} />
-            </a>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </section>
       <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       <motion.section
@@ -314,9 +580,9 @@ export default function Home() {
         <div
           className="
   group relative overflow-hidden
-  bg-white/[0.03]
-  backdrop-blur-xl
-  border border-white/10
+  bg-black/[0.03] dark:bg-white/[0.03]
+  backdrop-blur-xl bg-white/40 dark:bg-transparent
+  border border-black/10 dark:border-black/10 dark:border-white/10
   rounded-3xl
   p-6
   transition-all duration-500
@@ -331,10 +597,10 @@ export default function Home() {
           <h2 className="text-4xl font-bold mb-10">Engineering Profile</h2>
 
           <div className="grid md:grid-cols-2 gap-10">
-            <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
+            <div className="bg-white/5 border border-black/10 dark:border-black/10 dark:border-white/10 p-8 rounded-3xl backdrop-blur-sm">
               <h3 className="text-2xl font-semibold mb-4">Who I Am</h3>
 
-              <p className="text-gray-400 leading-8">
+              <p className="text-gray-600 dark:text-gray-600 dark:text-gray-400 leading-8">
                 I enjoy building scalable backend systems focused on
                 performance, reliability, distributed workflows, and
                 production-grade engineering. My interests include caching
@@ -356,10 +622,10 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
+            <div className="bg-white/5 border border-black/10 dark:border-black/10 dark:border-white/10 p-8 rounded-3xl backdrop-blur-sm">
               <h3 className="text-2xl font-semibold mb-4">Current Interests</h3>
 
-              <ul className="space-y-4 text-gray-400">
+              <ul className="space-y-4 text-gray-600 dark:text-gray-600 dark:text-gray-400">
                 <li>⚡ Distributed Systems</li>
                 <li>⚡ High-performance APIs</li>
                 <li>⚡ Real-time Backend Infrastructure</li>
@@ -383,15 +649,15 @@ export default function Home() {
 
         {/* Header */}
         <div className="text-center mb-20 relative z-10">
-          <div className="text-sm tracking-[0.3em] uppercase text-gray-500 mb-4">
+          <div className="text-sm tracking-[0.3em] uppercase text-gray-500 dark:text-gray-400 mb-4">
             Technical Expertise
           </div>
 
-          <h2 className="text-5xl md:text-6xl font-bold tracking-tight">
+          <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-black dark:text-white">
             Skills & Infrastructure
           </h2>
 
-          <p className="max-w-3xl mx-auto mt-6 text-gray-400 text-lg leading-relaxed">
+          <p className="max-w-3xl mx-auto mt-6 text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
             Backend engineering focused on scalable APIs, distributed systems,
             observability, caching, and production-grade infrastructure.
           </p>
@@ -405,10 +671,10 @@ export default function Home() {
           viewport={{ once: true }}
           className="grid md:grid-cols-2 gap-8 relative z-10"
         >
-          {/* Languages */}
+          {/* LANGUAGES */}
           <motion.div
             variants={fadeUp}
-            className="group relative overflow-hidden bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl p-6 transition-all duration-500 hover:-translate-y-2 hover:border-cyan-400/30"
+            className="group relative overflow-hidden bg-white/60 dark:bg-white/[0.03] backdrop-blur-xl border border-black/10 dark:border-white/10 rounded-3xl p-6 transition-all duration-500 hover:-translate-y-2 hover:border-cyan-400/30"
           >
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-blue-500/10" />
@@ -416,35 +682,53 @@ export default function Home() {
 
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-6">
-                <Code2 className="text-cyan-400" />
-                <h3 className="text-xl font-medium">Languages & Core CS</h3>
+                <div className="p-2 rounded-xl bg-cyan-500/10 border border-cyan-500/20">
+                  <Code2 className="text-cyan-400" size={22} />
+                </div>
+
+                <h3 className="text-xl font-semibold text-black dark:text-white">
+                  Languages & Core CS
+                </h3>
               </div>
 
               <div className="flex flex-wrap gap-3">
-                <div className="group flex items-center gap-2 bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-xl text-sm text-gray-300 hover:text-white hover:border-cyan-400/40 hover:bg-cyan-500/10 transition-all duration-300 hover:scale-105">
-                  <SiCplusplus className="text-blue-500" />
-                  C++
-                </div>
-
-                <div className="group flex items-center gap-2 bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-xl text-sm text-gray-300 hover:text-white hover:border-yellow-400/40 hover:bg-yellow-500/10 transition-all duration-300 hover:scale-105">
-                  <SiJavascript className="text-yellow-400" />
-                  JavaScript
-                </div>
-
-                <div className="group flex items-center gap-2 bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-xl text-sm text-gray-300 hover:text-white hover:border-blue-400/40 hover:bg-blue-500/10 transition-all duration-300 hover:scale-105">
-                  <SiTypescript className="text-blue-400" />
-                  TypeScript
-                </div>
-
-                <div className="group flex items-center gap-2 bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-xl text-sm text-gray-300 hover:text-white hover:border-yellow-300/40 hover:bg-yellow-500/10 transition-all duration-300 hover:scale-105">
-                  <SiPython className="text-yellow-300" />
-                  Python
-                </div>
+                {[
+                  {
+                    icon: <SiCplusplus className="text-blue-500" size={18} />,
+                    name: "C++",
+                    hover: "hover:border-blue-400/40 hover:bg-blue-500/10",
+                  },
+                  {
+                    icon: (
+                      <SiJavascript className="text-yellow-400" size={18} />
+                    ),
+                    name: "JavaScript",
+                    hover: "hover:border-yellow-400/40 hover:bg-yellow-500/10",
+                  },
+                  {
+                    icon: <SiTypescript className="text-blue-400" size={18} />,
+                    name: "TypeScript",
+                    hover: "hover:border-cyan-400/40 hover:bg-cyan-500/10",
+                  },
+                  {
+                    icon: <SiPython className="text-yellow-300" size={18} />,
+                    name: "Python",
+                    hover: "hover:border-yellow-300/40 hover:bg-yellow-500/10",
+                  },
+                ].map((skill) => (
+                  <div
+                    key={skill.name}
+                    className={`flex items-center gap-2 bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 px-4 py-2 rounded-xl text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 hover:scale-105 ${skill.hover}`}
+                  >
+                    {skill.icon}
+                    {skill.name}
+                  </div>
+                ))}
 
                 {["OOP", "LLD", "HLD", "DSA"].map((skill) => (
                   <div
                     key={skill}
-                    className="bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-cyan-500/10 hover:border-cyan-400/40 transition-all duration-300 hover:scale-105"
+                    className="bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 px-4 py-2 rounded-xl text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-cyan-500/10 hover:border-cyan-400/40 transition-all duration-300 hover:scale-105"
                   >
                     {skill}
                   </div>
@@ -453,10 +737,10 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Backend */}
+          {/* BACKEND */}
           <motion.div
             variants={fadeUp}
-            className="group relative overflow-hidden bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl p-6 transition-all duration-500 hover:-translate-y-2 hover:border-blue-400/30"
+            className="group relative overflow-hidden bg-white/60 dark:bg-white/[0.03] backdrop-blur-xl border border-black/10 dark:border-white/10 rounded-3xl p-6 transition-all duration-500 hover:-translate-y-2 hover:border-blue-400/30"
           >
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-cyan-500/10" />
@@ -464,39 +748,48 @@ export default function Home() {
 
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-6">
-                <Database className="text-blue-400" />
-                <h3 className="text-xl font-medium">Backend Engineering</h3>
+                <div className="p-2 rounded-xl bg-blue-500/10 border border-blue-500/20">
+                  <Database className="text-blue-400" size={22} />
+                </div>
+
+                <h3 className="text-xl font-semibold text-black dark:text-white">
+                  Backend Engineering
+                </h3>
               </div>
 
               <div className="flex flex-wrap gap-3">
-                <div className="group flex items-center gap-2 bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-xl text-sm text-gray-300 hover:text-white hover:border-green-400/40 hover:bg-green-500/10 transition-all duration-300 hover:scale-105">
-                  <SiNodedotjs className="text-green-400" />
-                  Node.js
-                </div>
-
-                <div className="group flex items-center gap-2 bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-xl text-sm text-gray-300 hover:text-white hover:border-red-400/40 hover:bg-red-500/10 transition-all duration-300 hover:scale-105">
-                  <SiNestjs className="text-red-500" />
-                  NestJS
-                </div>
-
-                {["Express", "REST APIs", "JWT/RBAC", "Cron Jobs"].map(
-                  (skill) => (
-                    <div
-                      key={skill}
-                      className="bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-blue-500/10 hover:border-blue-400/40 transition-all duration-300 hover:scale-105"
-                    >
-                      {skill}
-                    </div>
-                  ),
-                )}
+                {[
+                  {
+                    icon: <SiNodedotjs className="text-green-400" size={18} />,
+                    name: "Node.js",
+                    hover: "hover:border-green-400/40 hover:bg-green-500/10",
+                  },
+                  {
+                    icon: <SiNestjs className="text-red-500" size={18} />,
+                    name: "NestJS",
+                    hover: "hover:border-red-400/40 hover:bg-red-500/10",
+                  },
+                  { name: "Express" },
+                  { name: "REST APIs" },
+                  { name: "JWT/RBAC" },
+                  { name: "Cron Jobs" },
+                ].map((skill) => (
+                  <div
+                    key={skill.name}
+                    className={`flex items-center gap-2 bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 px-4 py-2 rounded-xl text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 hover:scale-105 ${skill.hover || "hover:border-blue-400/40 hover:bg-blue-500/10"}`}
+                  >
+                    {skill.icon}
+                    {skill.name}
+                  </div>
+                ))}
               </div>
             </div>
           </motion.div>
 
-          {/* Distributed Systems */}
+          {/* DISTRIBUTED */}
           <motion.div
             variants={fadeUp}
-            className="md:col-span-2 group relative overflow-hidden bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl p-6 transition-all duration-500 hover:-translate-y-2 hover:border-purple-400/30"
+            className="group relative overflow-hidden bg-white/60 dark:bg-white/[0.03] backdrop-blur-xl border border-black/10 dark:border-white/10 rounded-3xl p-6 transition-all duration-500 hover:-translate-y-2 hover:border-purple-400/30"
           >
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-pink-500/10" />
@@ -504,11 +797,16 @@ export default function Home() {
 
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-6">
-                <BrainCircuit className="text-purple-400" />
-                <h3 className="text-xl font-medium">Distributed Systems</h3>
+                <div className="p-2 rounded-xl bg-purple-500/10 border border-purple-500/20">
+                  <BrainCircuit className="text-purple-400" size={22} />
+                </div>
+
+                <h3 className="text-xl font-semibold text-black dark:text-white">
+                  Distributed Systems
+                </h3>
               </div>
 
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-3 mb-6">
                 {[
                   "Microservices",
                   "BullMQ",
@@ -519,39 +817,55 @@ export default function Home() {
                 ].map((skill) => (
                   <div
                     key={skill}
-                    className="bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-purple-500/10 hover:border-purple-400/40 transition-all duration-300 hover:scale-105"
+                    className="bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 px-4 py-2 rounded-xl text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-purple-500/10 hover:border-purple-400/40 transition-all duration-300 hover:scale-105"
                   >
                     {skill}
                   </div>
                 ))}
               </div>
 
-              {/* Metrics */}
-              <div className="grid md:grid-cols-3 gap-4 mt-8">
-                <div className="bg-purple-500/5 border border-purple-500/10 rounded-2xl p-4">
-                  <div className="text-2xl font-bold text-purple-400">10K+</div>
-                  <div className="text-sm text-gray-400 mt-1">Jobs/day</div>
-                </div>
+              <div className="grid grid-cols-3 gap-4">
+                {[
+                  {
+                    value: "10K+",
+                    label: "Jobs/day",
+                    color: "text-purple-400",
+                    bg: "bg-purple-500/5 border-purple-500/10",
+                  },
+                  {
+                    value: "70%",
+                    label: "Latency Reduction",
+                    color: "text-cyan-400",
+                    bg: "bg-cyan-500/5 border-cyan-500/10",
+                  },
+                  {
+                    value: "99.9%",
+                    label: "Reliability",
+                    color: "text-green-400",
+                    bg: "bg-green-500/5 border-green-500/10",
+                  },
+                ].map((metric) => (
+                  <div
+                    key={metric.label}
+                    className={`${metric.bg} border rounded-2xl p-4`}
+                  >
+                    <div className={`text-2xl font-bold ${metric.color}`}>
+                      {metric.value}
+                    </div>
 
-                <div className="bg-cyan-500/5 border border-cyan-500/10 rounded-2xl p-4">
-                  <div className="text-2xl font-bold text-cyan-400">70%</div>
-                  <div className="text-sm text-gray-400 mt-1">
-                    Latency Reduction
+                    <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                      {metric.label}
+                    </div>
                   </div>
-                </div>
-
-                <div className="bg-green-500/5 border border-green-500/10 rounded-2xl p-4">
-                  <div className="text-2xl font-bold text-green-400">99.9%</div>
-                  <div className="text-sm text-gray-400 mt-1">Reliability</div>
-                </div>
+                ))}
               </div>
             </div>
           </motion.div>
 
-          {/* Databases */}
+          {/* DATABASES */}
           <motion.div
             variants={fadeUp}
-            className="group relative overflow-hidden bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl p-6 transition-all duration-500 hover:-translate-y-2 hover:border-green-400/30"
+            className="group relative overflow-hidden bg-white/60 dark:bg-white/[0.03] backdrop-blur-xl border border-black/10 dark:border-white/10 rounded-3xl p-6 transition-all duration-500 hover:-translate-y-2 hover:border-green-400/30"
           >
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700">
               <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 via-transparent to-emerald-500/10" />
@@ -559,35 +873,51 @@ export default function Home() {
 
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-6">
-                <Database className="text-green-400" />
-                <h3 className="text-xl font-medium">Databases & Caching</h3>
+                <div className="p-2 rounded-xl bg-green-500/10 border border-green-500/20">
+                  <Database className="text-green-400" size={22} />
+                </div>
+
+                <h3 className="text-xl font-semibold text-black dark:text-white">
+                  Databases & Caching
+                </h3>
               </div>
 
               <div className="flex flex-wrap gap-3">
-                <div className="group flex items-center gap-2 bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-xl text-sm text-gray-300 hover:text-white hover:border-blue-400/40 hover:bg-blue-500/10 transition-all duration-300 hover:scale-105">
-                  <SiPostgresql className="text-blue-400" />
-                  PostgreSQL
-                </div>
-
-                <div className="group flex items-center gap-2 bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-xl text-sm text-gray-300 hover:text-white hover:border-cyan-400/40 hover:bg-cyan-500/10 transition-all duration-300 hover:scale-105">
-                  <SiMysql className="text-cyan-400" />
-                  MySQL
-                </div>
-
-                <div className="group flex items-center gap-2 bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-xl text-sm text-gray-300 hover:text-white hover:border-green-400/40 hover:bg-green-500/10 transition-all duration-300 hover:scale-105">
-                  <SiMongodb className="text-green-500" />
-                  MongoDB
-                </div>
-
-                <div className="group flex items-center gap-2 bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-xl text-sm text-gray-300 hover:text-white hover:border-red-400/40 hover:bg-red-500/10 transition-all duration-300 hover:scale-105">
-                  <SiRedis className="text-red-400" />
-                  Redis
-                </div>
+                {[
+                  {
+                    icon: <SiPostgresql className="text-blue-400" size={18} />,
+                    name: "PostgreSQL",
+                    hover: "hover:border-blue-400/40 hover:bg-blue-500/10",
+                  },
+                  {
+                    icon: <SiMysql className="text-cyan-400" size={18} />,
+                    name: "MySQL",
+                    hover: "hover:border-cyan-400/40 hover:bg-cyan-500/10",
+                  },
+                  {
+                    icon: <SiMongodb className="text-green-500" size={18} />,
+                    name: "MongoDB",
+                    hover: "hover:border-green-400/40 hover:bg-green-500/10",
+                  },
+                  {
+                    icon: <SiRedis className="text-red-400" size={18} />,
+                    name: "Redis",
+                    hover: "hover:border-red-400/40 hover:bg-red-500/10",
+                  },
+                ].map((skill) => (
+                  <div
+                    key={skill.name}
+                    className={`flex items-center gap-2 bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 px-4 py-2 rounded-xl text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 hover:scale-105 ${skill.hover}`}
+                  >
+                    {skill.icon}
+                    {skill.name}
+                  </div>
+                ))}
 
                 {["DB Indexing", "Query Optimization"].map((skill) => (
                   <div
                     key={skill}
-                    className="bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-green-500/10 hover:border-green-400/40 transition-all duration-300 hover:scale-105"
+                    className="bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 px-4 py-2 rounded-xl text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-green-500/10 hover:border-green-400/40 transition-all duration-300 hover:scale-105"
                   >
                     {skill}
                   </div>
@@ -596,10 +926,10 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Infrastructure */}
+          {/* INFRA */}
           <motion.div
             variants={fadeUp}
-            className="group relative overflow-hidden bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl p-6 transition-all duration-500 hover:-translate-y-2 hover:border-orange-400/30"
+            className="group relative overflow-hidden bg-white/60 dark:bg-white/[0.03] backdrop-blur-xl border border-black/10 dark:border-white/10 rounded-3xl p-6 transition-all duration-500 hover:-translate-y-2 hover:border-orange-400/30"
           >
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-transparent to-yellow-500/10" />
@@ -607,196 +937,358 @@ export default function Home() {
 
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-6">
-                <Globe className="text-orange-400" />
-                <h3 className="text-xl font-medium">
+                <div className="p-2 rounded-xl bg-orange-500/10 border border-orange-500/20">
+                  <Globe className="text-orange-400" size={22} />
+                </div>
+
+                <h3 className="text-xl font-semibold text-black dark:text-white">
                   Infrastructure & Observability
                 </h3>
               </div>
 
               <div className="flex flex-wrap gap-3">
-                <div className="group flex items-center gap-2 bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-xl text-sm text-gray-300 hover:text-white hover:border-sky-400/40 hover:bg-sky-500/10 transition-all duration-300 hover:scale-105">
-                  <SiDocker className="text-sky-400" />
-                  Docker
-                </div>
-
-                <div className="group flex items-center gap-2 bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-xl text-sm text-gray-300 hover:text-white hover:border-orange-400/40 hover:bg-orange-500/10 transition-all duration-300 hover:scale-105">
-                  <SiGrafana className="text-orange-400" />
-                  Grafana
-                </div>
-
-                <div className="group flex items-center gap-2 bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-xl text-sm text-gray-300 hover:text-white hover:border-red-400/40 hover:bg-red-500/10 transition-all duration-300 hover:scale-105">
-                  <SiJenkins className="text-red-400" />
-                  Jenkins
-                </div>
-
-                <div className="group flex items-center gap-2 bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-xl text-sm text-gray-300 hover:text-white hover:border-green-400/40 hover:bg-green-500/10 transition-all duration-300 hover:scale-105">
-                  <GitBranch className="text-green-400" size={16} />
-                  CI/CD
-                </div>
-
-                <div className="group flex items-center gap-2 bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-xl text-sm text-gray-300 hover:text-white hover:border-yellow-400/40 hover:bg-yellow-500/10 transition-all duration-300 hover:scale-105">
-                  <Activity className="text-yellow-400" size={16} />
-                  Logging
-                </div>
-
-                <div className="group flex items-center gap-2 bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-xl text-sm text-gray-300 hover:text-white hover:border-cyan-400/40 hover:bg-cyan-500/10 transition-all duration-300 hover:scale-105">
-                  <Cloud className="text-cyan-400" size={16} />
-                  Azure Blob
-                </div>
-
-                <div className="group flex items-center gap-2 bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-xl text-sm text-gray-300 hover:text-white hover:border-purple-400/40 hover:bg-purple-500/10 transition-all duration-300 hover:scale-105">
-                  <BarChart3 className="text-purple-400" size={16} />
-                  Databricks
-                </div>
+                {[
+                  {
+                    icon: <SiDocker className="text-sky-400" size={18} />,
+                    name: "Docker",
+                    hover: "hover:border-sky-400/40 hover:bg-sky-500/10",
+                  },
+                  {
+                    icon: <SiGrafana className="text-orange-400" size={18} />,
+                    name: "Grafana",
+                    hover: "hover:border-orange-400/40 hover:bg-orange-500/10",
+                  },
+                  {
+                    icon: <SiJenkins className="text-red-400" size={18} />,
+                    name: "Jenkins",
+                    hover: "hover:border-red-400/40 hover:bg-red-500/10",
+                  },
+                  {
+                    icon: <GitBranch className="text-green-400" size={18} />,
+                    name: "CI/CD",
+                    hover: "hover:border-green-400/40 hover:bg-green-500/10",
+                  },
+                  {
+                    icon: <Activity className="text-yellow-400" size={18} />,
+                    name: "Logging",
+                    hover: "hover:border-yellow-400/40 hover:bg-yellow-500/10",
+                  },
+                  {
+                    icon: <Cloud className="text-cyan-400" size={18} />,
+                    name: "Azure Blob",
+                    hover: "hover:border-cyan-400/40 hover:bg-cyan-500/10",
+                  },
+                  {
+                    icon: <BarChart3 className="text-purple-400" size={18} />,
+                    name: "Databricks",
+                    hover: "hover:border-purple-400/40 hover:bg-purple-500/10",
+                  },
+                ].map((skill) => (
+                  <div
+                    key={skill.name}
+                    className={`flex items-center gap-2 bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 px-4 py-2 rounded-xl text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 hover:scale-105 ${skill.hover}`}
+                  >
+                    {skill.icon}
+                    {skill.name}
+                  </div>
+                ))}
               </div>
             </div>
           </motion.div>
         </motion.div>
       </motion.section>
       <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-      <section id="projects" className="px-6 py-24">
+      <section id="projects" className="px-6 py-32 relative overflow-hidden">
+        {/* Background Glow */}
+        <div className="absolute top-40 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-purple-500/5 blur-3xl rounded-full" />
+
         <div
           className="
-  group relative overflow-hidden
-  bg-white/[0.03]
-  backdrop-blur-xl
-  border border-white/10
-  rounded-3xl
-  p-6
-  transition-all duration-500
-  hover:-translate-y-1
-  hover:border-cyan-400/30
-"
+      group relative overflow-hidden
+      bg-white/40 dark:bg-white/[0.03]
+      backdrop-blur-xl
+      border border-black/10 dark:border-white/10
+      rounded-[32px]
+      p-8
+    "
         >
+          {/* Hover Gradient */}
           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700">
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-purple-500/10" />
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-purple-500/5" />
           </div>
 
-          <h2 className="text-4xl font-bold mb-12">Projects</h2>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Project Card 1 */}
-            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 hover:bg-white/10 hover:shadow-2xl hover:shadow-purple-500/10 transition duration-300">
-              <div className="inline-flex items-center gap-2 bg-purple-500/10 border border-purple-500/20 px-3 py-1 rounded-full text-xs text-purple-300 mb-6">
-                Distributed Systems
+          <div className="relative z-10">
+            {/* Heading */}
+            <div className="mb-14">
+              <div className="text-sm tracking-[0.3em] uppercase text-gray-500 dark:text-gray-400 mb-4">
+                Engineering Work
               </div>
-              <h3 className="text-2xl font-semibold mb-4">
-                Scalable Hotel Search Engine
-              </h3>
 
-              <p className="text-gray-400 leading-7 mb-6">
-                Designed theme-based hotel filtering system (HLD/LLD) with
-                schema + indexing + Redis caching for fast listing retrieval
-                along with pagination.
+              <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-black dark:text-white">
+                Systems I’ve Built
+              </h2>
+
+              <p className="max-w-3xl mt-6 text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
+                Production-grade backend systems focused on scalability,
+                distributed workflows, caching, observability, and
+                high-throughput architectures.
               </p>
-
-              <div className="grid grid-cols-2 gap-3 mt-6 mb-6">
-                <div className="bg-black/30 border border-white/10 rounded-2xl p-4">
-                  <div className="text-2xl font-bold text-purple-400">70%</div>
-                  <div className="text-[13px] text-gray-400 mt-1">
-                    Latency Reduction
-                  </div>
-                </div>
-
-                <div className="bg-black/30 border border-white/10 rounded-2xl p-4">
-                  <div className="text-2xl font-bold text-blue-400">1M+</div>
-                  <div className="text-[13px] text-gray-400 mt-1">
-                    Requests / Month
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap gap-3 mb-6">
-                <span className="bg-white/10 px-3 py-1 rounded-full text-[13px]">
-                  Node.js
-                </span>
-
-                <span className="bg-white/10 px-3 py-1 rounded-full text-[13px]">
-                  NestJS
-                </span>
-
-                <span className="bg-white/10 px-3 py-1 rounded-full text-[13px]">
-                  MongoDB
-                </span>
-
-                <span className="bg-white/10 px-3 py-1 rounded-full text-[13px]">
-                  DB Indexing
-                </span>
-
-                <span className="bg-white/10 px-3 py-1 rounded-full text-[13px]">
-                  DB Query Optimization
-                </span>
-              </div>
-
-              <div className="flex gap-4">
-                <a
-                  href="https://github.com/"
-                  target="_blank"
-                  className="border border-white/20 px-5 py-2 rounded-xl hover:bg-white/10 transition"
-                >
-                  GitHub
-                </a>
-
-                <a
-                  href="/"
-                  className="bg-white text-black px-5 py-2 rounded-xl hover:scale-105 transition"
-                >
-                  Live Demo
-                </a>
-              </div>
             </div>
 
-            {/* Project Card 2 */}
-            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 hover:bg-white/10 hover:shadow-2xl hover:shadow-purple-500/10 transition duration-300">
-              <div className="inline-flex items-center gap-2 bg-purple-500/10 border border-purple-500/20 px-3 py-1 rounded-full text-xs text-purple-300 mb-6">
-                Distributed Systems
+            {/* GRID */}
+            <div className="grid lg:grid-cols-2 gap-8">
+              {/* PROJECT 1 */}
+              <div
+                className="
+            group/card relative overflow-hidden
+            bg-black/[0.03] dark:bg-white/[0.03]
+            border border-black/10 dark:border-white/10
+            rounded-3xl
+            p-8
+            transition-all duration-500
+            hover:-translate-y-2
+            hover:border-purple-400/30
+          "
+              >
+                {/* Glow */}
+                <div className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition duration-700">
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-cyan-500/10" />
+                </div>
+
+                <div className="relative z-10">
+                  {/* Label */}
+                  <div className="inline-flex items-center gap-2 bg-purple-500/10 border border-purple-500/20 px-4 py-1.5 rounded-full text-xs text-purple-400 mb-6">
+                    Distributed Systems
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-3xl font-bold text-black dark:text-white leading-tight mb-4">
+                    Hotel Discovery Infrastructure
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-gray-600 dark:text-gray-400 leading-8 mb-8 text-[15px]">
+                    High-throughput hotel discovery and filtering system built
+                    with schema optimization, Redis caching, DB indexing, and
+                    scalable pagination for fast listing retrieval at scale.
+                  </p>
+
+                  {/* Metrics */}
+                  <div className="grid grid-cols-2 gap-4 mb-8">
+                    <div className="bg-purple-500/[0.06] border border-purple-500/10 rounded-2xl p-5 hover:scale-[1.02] transition duration-300">
+                      <div className="text-3xl font-bold text-purple-400">
+                        70%
+                      </div>
+
+                      <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                        Latency Reduction
+                      </div>
+                    </div>
+
+                    <div className="bg-cyan-500/[0.06] border border-cyan-500/10 rounded-2xl p-5 hover:scale-[1.02] transition duration-300">
+                      <div className="text-3xl font-bold text-cyan-400">
+                        1M+
+                      </div>
+
+                      <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                        Requests / Month
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-3 mb-8">
+                    {[
+                      "Node.js",
+                      "NestJS",
+                      "MongoDB",
+                      "Redis",
+                      "DB Indexing",
+                      "Query Optimization",
+                    ].map((tech) => (
+                      <span
+                        key={tech}
+                        className="
+                    bg-black/[0.03] dark:bg-white/[0.04]
+                    border border-black/10 dark:border-white/10
+                    px-4 py-2
+                    rounded-xl
+                    text-sm
+                    text-gray-700 dark:text-gray-300
+                    hover:bg-purple-500/10
+                    hover:border-purple-400/30
+                    hover:text-black dark:hover:text-white
+                    transition-all duration-300
+                  "
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Buttons */}
+                  <div className="flex gap-4">
+                    <a
+                      href="https://github.com/"
+                      target="_blank"
+                      className="
+                  border border-black/10 dark:border-white/10
+                  bg-white/40 dark:bg-white/[0.03]
+                  backdrop-blur-xl
+                  px-6 py-3
+                  rounded-xl
+                  text-black dark:text-white
+                  hover:bg-black/5 dark:hover:bg-white/10
+                  hover:border-purple-400/30
+                  transition-all duration-300
+                "
+                    >
+                      GitHub
+                    </a>
+
+                    <a
+                      href="/"
+                      className="
+                  bg-white dark:bg-white
+                  text-black
+                  px-6 py-3
+                  rounded-xl
+                  font-medium
+                  hover:scale-105
+                  transition-all duration-300
+                "
+                    >
+                      Case Study
+                    </a>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-2xl font-semibold mb-4">
-                Real-Time Flight Tracking APIs
-              </h3>
 
-              <p className="text-gray-400 leading-7 mb-6">
-                Architected Flight Tracker listings for Airport-based (arr/dep)
-                and Route-based tracking with filtering + pagination.
-              </p>
+              {/* PROJECT 2 */}
+              <div
+                className="
+            group/card relative overflow-hidden
+            bg-black/[0.03] dark:bg-white/[0.03]
+            border border-black/10 dark:border-white/10
+            rounded-3xl
+            p-8
+            transition-all duration-500
+            hover:-translate-y-2
+            hover:border-cyan-400/30
+          "
+              >
+                {/* Glow */}
+                <div className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition duration-700">
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-blue-500/10" />
+                </div>
 
-              <div className="flex flex-wrap gap-3 mb-6">
-                <span className="bg-white/10 px-3 py-1 rounded-full text-[13px]">
-                  Node.js
-                </span>
+                <div className="relative z-10">
+                  {/* Label */}
+                  <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/20 px-4 py-1.5 rounded-full text-xs text-cyan-400 mb-6">
+                    Real-Time Systems
+                  </div>
 
-                <span className="bg-white/10 px-3 py-1 rounded-full text-[13px]">
-                  RestFul APIs
-                </span>
+                  {/* Title */}
+                  <h3 className="text-3xl font-bold text-black dark:text-white leading-tight mb-4">
+                    Flight Intelligence APIs
+                  </h3>
 
-                <span className="bg-white/10 px-3 py-1 rounded-full text-[13px]">
-                  Redis
-                </span>
+                  {/* Description */}
+                  <p className="text-gray-600 dark:text-gray-400 leading-8 mb-8 text-[15px]">
+                    Real-time airport and route-based flight tracking APIs
+                    designed for scalable filtering, pagination, low-latency
+                    responses, and production-grade reliability.
+                  </p>
 
-                <span className="bg-white/10 px-3 py-1 rounded-full text-[13px]">
-                  DB
-                </span>
+                  {/* Metrics */}
+                  <div className="grid grid-cols-2 gap-4 mb-8">
+                    <div className="bg-cyan-500/[0.06] border border-cyan-500/10 rounded-2xl p-5 hover:scale-[1.02] transition duration-300">
+                      <div className="text-3xl font-bold text-cyan-400">
+                        Real-Time
+                      </div>
 
-                <span className="bg-white/10 px-3 py-1 rounded-full text-[13px]">
-                  System Design
-                </span>
-              </div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                        Tracking APIs
+                      </div>
+                    </div>
 
-              <div className="flex gap-4">
-                <a
-                  href="https://github.com/"
-                  target="_blank"
-                  className="border border-white/20 px-5 py-2 rounded-xl hover:bg-white/10 transition"
-                >
-                  GitHub
-                </a>
+                    <div className="bg-blue-500/[0.06] border border-blue-500/10 rounded-2xl p-5 hover:scale-[1.02] transition duration-300">
+                      <div className="text-3xl font-bold text-blue-400">
+                        Low Latency
+                      </div>
 
-                <a
-                  href="/"
-                  className="bg-white text-black px-5 py-2 rounded-xl hover:scale-105 transition"
-                >
-                  Live Demo
-                </a>
+                      <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                        Optimized Responses
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Stack */}
+                  <div className="flex flex-wrap gap-3 mb-8">
+                    {[
+                      "Node.js",
+                      "REST APIs",
+                      "Redis",
+                      "Pagination",
+                      "System Design",
+                      "Caching",
+                    ].map((tech) => (
+                      <span
+                        key={tech}
+                        className="
+                    bg-black/[0.03] dark:bg-white/[0.04]
+                    border border-black/10 dark:border-white/10
+                    px-4 py-2
+                    rounded-xl
+                    text-sm
+                    text-gray-700 dark:text-gray-300
+                    hover:bg-cyan-500/10
+                    hover:border-cyan-400/30
+                    hover:text-black dark:hover:text-white
+                    transition-all duration-300
+                  "
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Buttons */}
+                  <div className="flex gap-4">
+                    <a
+                      href="https://github.com/"
+                      target="_blank"
+                      className="
+                  border border-black/10 dark:border-white/10
+                  bg-white/40 dark:bg-white/[0.03]
+                  backdrop-blur-xl
+                  px-6 py-3
+                  rounded-xl
+                  text-black dark:text-white
+                  hover:bg-black/5 dark:hover:bg-white/10
+                  hover:border-cyan-400/30
+                  transition-all duration-300
+                "
+                    >
+                      GitHub
+                    </a>
+
+                    <a
+                      href="/"
+                      className="
+                  bg-white dark:bg-white
+                  text-black
+                  px-6 py-3
+                  rounded-xl
+                  font-medium
+                  hover:scale-105
+                  transition-all duration-300
+                "
+                    >
+                      Case Study
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -807,9 +1299,9 @@ export default function Home() {
         <div
           className="mt-32 max-w-5xl mx-auto flex flex-col items-center text-center
   group relative overflow-hidden
-  bg-white/[0.03]
-  backdrop-blur-xl
-  border border-white/10
+  bg-black/[0.03] dark:bg-white/[0.03]
+  backdrop-blur-xl bg-white/40 dark:bg-transparent
+  border border-black/10 dark:border-black/10 dark:border-white/10
   rounded-3xl
   p-8
   transition-all duration-500
@@ -823,7 +1315,7 @@ export default function Home() {
 
           <h2 className="text-4xl font-bold mb-6">Contact</h2>
 
-          <p className="max-w-3xl text-gray-400 text-lg leading-relaxed mb-10">
+          <p className="max-w-3xl text-gray-600 dark:text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-10">
             Interested in collaborating, building something cool, or just having
             a tech conversation?
           </p>
@@ -839,7 +1331,7 @@ export default function Home() {
             <a
               href="https://github.com/"
               target="_blank"
-              className="border border-white/20 px-6 py-3 rounded-xl hover:bg-white/10 transition"
+              className="border border-black/10 dark:border-white/20 px-6 py-3 rounded-xl hover:bg-black/5 dark:bg-white/10 transition"
             >
               <FaGithub size={22} />
             </a>
@@ -847,7 +1339,7 @@ export default function Home() {
             <a
               href="https://linkedin.com/"
               target="_blank"
-              className="border border-white/20 px-6 py-3 rounded-xl hover:bg-white/10 transition"
+              className="border border-black/10 dark:border-white/20 px-6 py-3 rounded-xl hover:bg-black/5 dark:bg-white/10 transition"
             >
               <FaLinkedin size={22} />
             </a>
